@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passipaikka</title>
+
+  <!-- Block all crawlers, indexing and AI training -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, nocache">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, noai, noimageai">
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;700;900&display=swap');
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --dark:    #0d1a0f;
+      --forest:  #1a2e1c;
+      --mid:     #2c4a2e;
+      --accent:  #4a7c4e;
+      --muted:   #7aab7e;
+      --light:   #d6e8d7;
+      --gold:    #c8a84b;
+    }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      background-color: var(--dark);
+      font-family: 'Raleway', 'Segoe UI', sans-serif;
+      color: var(--light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* ── Night sky gradient ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, #1e3a22 0%, #0d1a0f 65%);
+      z-index: 0;
+    }
+
+    /* ── Stars ── */
+    .stars {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .stars span {
+      position: absolute;
+      display: block;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: rgba(214, 232, 215, 0.6);
+      animation: twinkle var(--d, 4s) ease-in-out infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; }
+      50%       { opacity: 1; }
+    }
+
+    /* ── Forest silhouette ── */
+    .treeline {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 300px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* ── Main content ── */
+    .content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding: 2rem;
+      user-select: none;
+    }
+
+    .logo-mark {
+      display: block;
+      margin: 0 auto 2rem;
+      width: 72px;
+      height: 72px;
+      opacity: 0.85;
+    }
+
+    h1 {
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      color: var(--light);
+      text-shadow: 0 0 60px rgba(74, 124, 78, 0.5);
+      line-height: 1;
+    }
+
+    .tagline {
+      margin-top: 1.5rem;
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      font-weight: 300;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--muted), transparent);
+      margin: 2rem auto;
+    }
+
+    .subtitle {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Stars -->
+  <div class="stars" aria-hidden="true" id="stars"></div>
+
+  <!-- Forest silhouette (paths built by JS for full-width stepped detail) -->
+  <svg class="treeline" id="treeline-svg" viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path id="tree-back"  fill="#4a7a4e"/>
+    <path id="tree-mid2"  fill="#3a6040"/>
+    <path id="tree-mid"   fill="#254d2a"/>
+    <path id="tree-front" fill="#1e3d22"/>
+  </svg>
+
+  <!-- Content -->
+  <main class="content">
+
+    <!-- Crosshair / scope icon -->
+    <svg class="logo-mark" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="36" cy="36" r="30" stroke="#4a7c4e" stroke-width="2" fill="none" opacity="0.7"/>
+      <circle cx="36" cy="36" r="18" stroke="#4a7c4e" stroke-width="1.5" fill="none" opacity="0.5"/>
+      <circle cx="36" cy="36" r="4"  fill="#c8a84b" opacity="0.9"/>
+      <!-- crosshair lines -->
+      <line x1="36" y1="6"  x2="36" y2="18" stroke="#4a7c4e" stroke-width="1.5" opacity="0.7"/>
+      <line x1="36" y1="54" x2="36" y2="66" stroke="#4a7c4e" stroke-width="1.5" opacity="0.7"/>
+      <line x1="6"  y1="36" x2="18" y2="36" stroke="#4a7c4e" stroke-width="1.5" opacity="0.7"/>
+      <line x1="54" y1="36" x2="66" y2="36" stroke="#4a7c4e" stroke-width="1.5" opacity="0.7"/>
+    </svg>
+
+    <h1>Passipaikka</h1>
+
+    <div class="divider"></div>
+
+    <p class="tagline">Tulossa joskus</p>
+
+    <div class="divider"></div>
+
+    <p class="subtitle">passipaikka.fi</p>
+
+  </main>
+
+  <script>
+    // ── Forest silhouette generator ──────────────────────────────
+    (function () {
+      const W = 1440, H = 300;
+
+      // Xorshift32 seeded PRNG for reproducible shapes
+      function makePrng(seed) {
+        let s = seed >>> 0;
+        return function () {
+          s ^= s << 13; s ^= s >> 17; s ^= s << 5;
+          return (s >>> 0) / 4294967295;
+        };
+      }
+
+      /**
+       * Build a stepped forest-silhouette SVG path.
+       * Steps are horizontal then vertical, creating the blocky tree look.
+       * minStep / maxStep control block width (smaller = more detail).
+       */
+      function buildForest(opts) {
+        const { baseY, minY, maxY, minStep, maxStep, seed } = opts;
+        const rng = makePrng(seed);
+
+        let x = 0, y = baseY;
+        let d = `M0,${H} L0,${y}`;
+
+        while (x < W) {
+          // Step width: small for fine detail
+          const step = minStep + Math.floor(rng() * (maxStep - minStep + 1));
+          const nextX = Math.min(x + step, W);
+
+          // Mean-reverting random walk: pulls back toward centre of range
+          const mid  = (minY + maxY) / 2;
+          const pull = (mid - y) * 0.12;
+          const noise = (rng() - 0.45) * (maxY - minY) * 0.5;
+          let nextY = Math.round(y + pull + noise);
+          nextY = Math.max(minY, Math.min(maxY, nextY));
+
+          // Horizontal segment at current height, then vertical jump
+          d += ` L${nextX},${y} L${nextX},${nextY}`;
+          y = nextY;
+          x = nextX;
+        }
+
+        // Close to bottom-right then bottom-left
+        d += ` L${W},${H} Z`;
+        return d;
+      }
+
+      document.getElementById('tree-back').setAttribute('d',
+        buildForest({ baseY: 185, minY: 110, maxY: 200, minStep: 14, maxStep: 26, seed: 0x9e3779b9 })
+      );
+      document.getElementById('tree-mid2').setAttribute('d',
+        buildForest({ baseY: 185, minY: 90,  maxY: 200, minStep: 10, maxStep: 20, seed: 0xf0e1d2c3 })
+      );
+      document.getElementById('tree-mid').setAttribute('d',
+        buildForest({ baseY: 205, minY: 130, maxY: 220, minStep: 8,  maxStep: 16, seed: 0x6c62272e })
+      );
+      document.getElementById('tree-front').setAttribute('d',
+        buildForest({ baseY: 220, minY: 155, maxY: 240, minStep: 7,  maxStep: 14, seed: 0xdeadbeef })
+      );
+    })();
+
+    // ── Stars ────────────────────────────────────────────────────
+    // Positions fixed in px at load time so resizing the window doesn't move them
+    (function () {
+      const container = document.getElementById('stars');
+      const count = 120;
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      for (let i = 0; i < count; i++) {
+        const star = document.createElement('span');
+        star.style.left   = Math.round(Math.random() * vw) + 'px';
+        star.style.top    = Math.round(Math.random() * vh * 0.72) + 'px';
+        star.style.setProperty('--d', (2.5 + Math.random() * 4).toFixed(1) + 's');
+        star.style.animationDelay = (Math.random() * 5).toFixed(1) + 's';
+        const size = Math.random() < 0.15 ? 3 : 2;
+        star.style.width  = size + 'px';
+        star.style.height = size + 'px';
+        container.appendChild(star);
+      }
+    })();
+  </script>
+
+</body>
+</html>
