@@ -6,10 +6,25 @@
   <title>Passipaikka</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
-  <!-- Block all crawlers, indexing and AI training -->
-  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, nocache">
-  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, noai, noimageai">
-  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+  <!-- ── Crawler & AI agent directives ────────────────────────────── -->
+  <meta name="robots"    content="noindex, nofollow, nosnippet, noarchive, noimageindex, notranslate">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="bingbot"   content="noindex, nofollow, noarchive, nosnippet">
+
+  <!--
+    Security note: HTTP headers (CSP, X-Frame-Options, etc.) are most effective
+    when served at the network layer. GitHub Pages does not support custom headers,
+    so the meta-equivalent equivalents below provide best-effort mitigation only.
+    Consider fronting with Cloudflare or another proxy for full header control.
+  -->
+
+  <!-- Content-Security-Policy: no external assets, inline scripts blocked, no framing -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; base-uri 'none'; form-action 'none'; frame-ancestors 'none';">
+  <!-- MIME sniffing protection -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <!-- No referrer leaked on any navigation -->
+  <meta name="referrer" content="no-referrer">
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;700;900&display=swap');
